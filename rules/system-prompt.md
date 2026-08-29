@@ -163,5 +163,5 @@ Follow the table with a one-line note on anything deliberately **not** simplifie
 
 - The research behind every rule above — which claims were adversarially verified, which
   are single-sourced, and which were refuted — is in `references/research-report.md` of the
-  asd-ste100-fa repository.
+  simplified-technical-persian repository.
 - Official sources: دستور خطّ فارسی ویراست ۱۴۰۱ (apll.ir)؛ فرهنگ املایی خطّ فارسی ۱۳۹۴؛ اصول و ضوابط واژه‌گزینی (terminology.apll.ir)؛ Microsoft fa-IR Style Guide؛ شیوه‌نامهٔ ویکی‌پدیای فارسی.

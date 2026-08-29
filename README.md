@@ -1,10 +1,10 @@
-# asd-ste100-fa — Simplified Technical Persian
+# Simplified Technical Persian
 
-**[🇮🇷 نسخهٔ فارسی این راهنما](README.fa.md)**
+**[فارسی](README.fa.md)** · **[English](README.md)**
 
 A Claude Code skill that rewrites Persian (Farsi) technical text so it has exactly one legal
 reading. It adapts the discipline of [ASD-STE100](https://www.asd-ste100.org/) (Simplified
-Technical English) to Persian — not by translating English rules, but by restating each rule in
+Technical English) to Persian, not by translating English rules but by restating each rule in
 Persian-grammar terms and adding the rules Persian needs and English does not.
 
 ## Why
@@ -32,19 +32,19 @@ Clone the repo, then link it into your skills directory:
 
 ```bash
 git clone <this-repo> ~/projects/asd-ste100
-ln -s ~/projects/asd-ste100 ~/.claude/skills/asd-ste100-fa
+ln -s ~/projects/asd-ste100 ~/.claude/skills/persian-technical-writing
 ```
 
 Or copy it into a single project instead:
 
 ```bash
-mkdir -p .claude/skills && cp -R ~/projects/asd-ste100 .claude/skills/asd-ste100-fa
+mkdir -p .claude/skills && cp -R ~/projects/asd-ste100 .claude/skills/persian-technical-writing
 ```
 
 ## Install (other agents)
 
 The rules are agent-agnostic; only the packaging differs. Most agents take plain markdown, so
-`rules/system-prompt.md` covers them all — copy it and rename it to whatever your tool expects:
+`rules/system-prompt.md` covers them all. Copy it and rename it to whatever your tool expects:
 
 | Agent / tool | Copy | To |
 |---|---|---|
@@ -57,8 +57,8 @@ The rules are agent-agnostic; only the packaging differs. Most agents take plain
 | | `rules/windsurf-persian-structure.md` | `.windsurf/rules/persian-structure.md` |
 
 Only two tools need their own file: Cursor requires MDC frontmatter, and Windsurf caps a rule file
-at ~6,000 characters, so the ruleset splits in two there. `rules/README.md` has the per-target notes
-— why the Cursor rule is agent-requested rather than always-on, how to scope the Copilot file to
+at ~6,000 characters, so the ruleset splits in two there. `rules/README.md` has the per-target notes:
+why the Cursor rule is agent-requested rather than always-on, how to scope the Copilot file to
 Persian paths, and what the Windsurf condensation drops. Using it from code:
 
 ```python
@@ -77,7 +77,7 @@ Claude invokes the skill on its own when you ask for Persian text to be simplifi
 it by name:
 
 ```
-/asd-ste100-fa
+/persian-technical-writing
 
 این پاراگراف را ساده کن: ...
 ```
@@ -92,7 +92,7 @@ Typical prompts that trigger it:
 
 | Mode | For | Rules applied |
 |---|---|---|
-| **Strict (سخت‌گیرانه)** | Procedures, error messages, tool and function descriptions, inter-agent instructions, safety text | Everything — length caps, the semicolon ban, one-word-one-meaning |
+| **Strict (سخت‌گیرانه)** | Procedures, error messages, tool and function descriptions, inter-agent instructions, safety text | Everything: length caps, the semicolon ban, one-word-one-meaning |
 | **Flavored (روان)** | READMEs, blog-style docs, changelogs, explanatory prose | Structural and script rules in full; lexical rules advisory; ؛ permitted sparingly |
 
 **Script mechanics are never optional.** ZWNJ, Persian codepoints (ی U+06CC, ک U+06A9), Persian
@@ -101,7 +101,7 @@ preferences.
 
 ### Output
 
-By default the skill prints the rewritten Persian text and nothing else — no preamble, no violation
+By default the skill prints the rewritten Persian text and nothing else: no preamble, no violation
 count. Ask for the reasoning («تفاوت‌ها را نشان بده», "show the diff", "which rules did it break")
 and it returns a rule table instead:
 
@@ -112,16 +112,16 @@ and it returns a rule table instead:
 
 ## What it checks
 
-Eight mechanical checks — each one points at an exact word or character:
+Eight mechanical checks. Each one points at an exact word or character:
 
-1. Bureaucratic nominalization — «مورد … قرار دادن», «به عمل آوردن», «اقدام به … نمودن»
-2. Synonym rotation — کاربر / مشتری / استفاده‌کننده for one referent
-3. می‌باشد register — می‌باشد, بدین‌وسیله, مذکور, ذیل
-4. که-chains and و-chains — several ideas in one sentence
-5. Ezafe pile-ups — 4+ chained links
-6. Script hygiene — Arabic ي/ك, Latin digits in prose, «می رود», «میرود», «کتابها»
-7. Hedge stacking — «شاید بتوان گفت که احتمالاً ممکن است»
-8. Bidi breakage — unmarked English, code, or numbers inline
+1. Bureaucratic nominalization: «مورد … قرار دادن», «به عمل آوردن», «اقدام به … نمودن»
+2. Synonym rotation: کاربر / مشتری / استفاده‌کننده for one referent
+3. می‌باشد register: می‌باشد, بدین‌وسیله, مذکور, ذیل
+4. که-chains and و-chains: several ideas in one sentence
+5. Ezafe pile-ups: 4+ chained links
+6. Script hygiene: Arabic ي/ك, Latin digits in prose, «می رود», «میرود», «کتابها»
+7. Hedge stacking: «شاید بتوان گفت که احتمالاً ممکن است»
+8. Bidi breakage: unmarked English, code, or numbers inline
 
 ## Scope
 
@@ -130,14 +130,14 @@ normalize script mechanics in every mode; preserve every fact, condition, scope 
 
 **Will not:** claim Farhangestan certification; ban compound (light-verb) constructions; flag every
 شدن as passive; simplify creative or marketing copy; drop a safety condition to shorten a sentence;
-or make weak content true — controlled Persian fixes the form of a text, not its substance.
+or make weak content true. Controlled Persian fixes the form of a text, not its substance.
 
 ## Files
 
 | Path | What it is |
 |---|---|
-| `SKILL.md` | **The single source of truth** — rules, scan checklist, process, output format, boundaries. Also the Claude Code skill |
-| `references/research-report.md` | The cited research behind every rule — which claims were adversarially verified, which are single-sourced, and which were refuted |
+| `SKILL.md` | **The single source of truth**: rules, scan checklist, process, output format, boundaries. Also the Claude Code skill |
+| `references/research-report.md` | The cited research behind every rule: which claims were adversarially verified, which are single-sourced, and which were refuted |
 | `rules/` | The same ruleset packaged for other agents |
 | `AGENTS.md` | Instructions for agents working *on* this repo |
 
@@ -155,7 +155,7 @@ decisions carried over from STE, not as Persian-validated metrics.
 Adapting a controlled language across languages is not new. GIFAS built «le Français Rationalisé» to
 pair with AECMA Simplified English, with a dual goal: easy mapping to Simplified English *and* better
 readability for native French readers. A working group ran from 1985 to publication in 1999. This
-skill takes the same position for Persian — native readers first.
+skill takes the same position for Persian: native readers first.
 
 ## License
 

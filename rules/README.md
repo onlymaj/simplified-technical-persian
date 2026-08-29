@@ -1,9 +1,9 @@
-# rules/ — the ruleset for other agents
+# The ruleset for other agents
 
 Most agents take a plain markdown file, so one file covers most of them: **`system-prompt.md`**,
 the full ruleset with no frontmatter. Copy it and rename it to whatever your tool expects.
 
-The other files exist only where a tool forces a different shape — Cursor needs MDC frontmatter,
+The other files exist only where a tool forces a different shape: Cursor needs MDC frontmatter,
 and Windsurf caps a rule file at roughly 6,000 characters.
 
 ## Install matrix
@@ -38,17 +38,17 @@ characters of context on every request. Set `alwaysApply: true` only if your rep
 **Windsurf** caps a rule file at roughly 6,000 characters, so the ruleset ships as two files that
 install together:
 
-- `persian-script.md` — orthography and bidi (ZWNJ, codepoints, digits, punctuation, dates,
+- `persian-script.md`: orthography and bidi (ZWNJ, codepoints, digits, punctuation, dates,
   RTL/LTR isolation). These apply in every mode, so this file keeps its full "Don't" column: the
   negative examples are what make the rules checkable.
-- `persian-structure.md` — modes, structural rules, lexical rules, terminology, scan checklist.
+- `persian-structure.md`: modes, structural rules, lexical rules, terminology, scan checklist.
   Condensed to fit: the tables keep "Rule" and "Do" but drop "Don't" and "Why". It references
   `persian-script.md` by name, so keep that filename.
 
 Both use `trigger: model_decision`. Switch to `always_on` to load them unconditionally.
 
-The two Windsurf files together are also the best compact version of the ruleset — about 10K
-characters instead of 22K — if you need a system prompt for a small model or a tight context
+The two Windsurf files together are also the best compact version of the ruleset, about 10K
+characters instead of 22K, if you need a system prompt for a small model or a tight context
 budget. Prefer `system-prompt.md` when the model can afford it.
 
 ## Using it from code

@@ -1,5 +1,5 @@
 ---
-name: asd-ste100-fa
+name: persian-technical-writing
 description: "Use when Persian (Farsi) text for Iranian audiences must be parsed without a human to resolve ambiguity — documentation, knowledge-base articles, error messages, tool descriptions, inter-agent instructions, help-center content — and misreading has a real cost, or when Persian text reads as dense, bureaucratic, or easy to misparse. Triggers: بازنویسی ساده, فارسی روان, ساده‌نویسی فنی, ویرایش فنی, controlled-Persian rewrite, simplify Persian docs, rewrite so an agent cannot misread this Persian text. Not for creative or marketing copy."
 metadata:
   version: "0.1.0"
